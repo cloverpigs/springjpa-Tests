@@ -28,6 +28,7 @@ public class MenuController {
 		
 	}
 	
+	/* 메뉴 조회하기 */
 	@GetMapping("/list")
 	public String findAllMenu(Model model) {
 		List<MenuDTO> menuList = menuService.findAllMeun();
@@ -37,9 +38,11 @@ public class MenuController {
 		return "menu/list";
 	}
 	
+	/*메뉴 등록하기 페이지 */
 	@GetMapping("/regist")
 	public void registPage() {};
 	
+	/* 메뉴 등록 진행*/
 	@PostMapping("/regist")
 	public String registMenu(@ModelAttribute MenuDTO newMenu) {
 		menuService.registNewMenu(newMenu);
@@ -47,7 +50,7 @@ public class MenuController {
 		return "redirect:/menu/list";
 	}
 	
-	
+	/* 카테고리리스트에 대한 값 비동기 통신 */
 	@GetMapping(value="category", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<CategoryDTO> findAllCategoryList(){
@@ -55,9 +58,11 @@ public class MenuController {
 		return menuService.findAllCategory();
 	}
 	
+	/* 메뉴 수정하기 페이지 */
 	@GetMapping("/modify")
 	public void modifyPage() {}
 	
+	/* 메뉴리스트에 대한 값 비동기 통시*/
 	@GetMapping(value="menuList", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<MenuDTO> findAllMenuList() {
@@ -65,6 +70,7 @@ public class MenuController {
 		return menuService.findAllMeun();
 	}
 	
+	/* 메뉴 수정 등록*/
 	@PostMapping("/modify")
 	public String modifyMenu(@ModelAttribute MenuDTO menu, RedirectAttributes rttr) {
 		
@@ -77,6 +83,7 @@ public class MenuController {
 		return "redirect:/menu/" + menu.getMenuCode();
 	}
 	
+	/*메뉴코드에 맞는 메뉴값 가져오기 비동기 통신*/
 	@GetMapping(value="modifyOneMenu", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public MenuDTO findOneMenu(@RequestParam int menuCode) {
@@ -84,6 +91,7 @@ public class MenuController {
 		return menuService.findMenuByMenuCode(menuCode);
 	}
 	
+	/* 수정된 결과 보여주는 페이지*/
 	@GetMapping("/{menuCode}")
 	public String findMenuByMenuCode(@PathVariable int menuCode, Model model) {
 		
@@ -95,10 +103,12 @@ public class MenuController {
 		
 	}
 	
+	/* 메뉴 삭제하기 페이지 */
 	@GetMapping("/delete")
 	public void deletePage() {}
 	
 	
+	/* 메뉴 삭제 진행*/
 	@PostMapping("delete")
 	public String deleteMenu(@RequestParam(value="menuCode") int menuCode, RedirectAttributes rttr) {
 		
