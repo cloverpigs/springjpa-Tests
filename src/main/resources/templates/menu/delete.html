@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>delete</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+	<h2 align="center">기존 메뉴 삭제</h2>
+	<form action="/menu/delete" method="post" >
+		<label>삭제할 메뉴 : </label>
+		<select name="menuCode" id="menuCode">
+		</select><br>
+		<input type="submit" value="삭제하기">
+		<input type="button" value="메인으로" onclick="location.href='/main'">
+	</form>
+	
+		<script>
+		$(function(){
+			
+			
+			$.ajax({
+				url : '/menu/menuList',
+				success : function(data){
+					console.log(data);
+					
+					let html="";
+					
+					for (let index in data) {
+						html += `<option value='${data[index].menuCode}'>${data[index].menuName}</option>`;
+					}
+					
+					document.querySelector("#menuCode").insertAdjacentHTML('beforeend',html);
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+				
+			});
+			
+			
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>one</title>
+</head>
+<body>
+	<h3 align="center">변경 전 메뉴</h3>
+	<table border="1" style="margin-right:auto; margin-left:auto">
+		<tr>
+			<th>메뉴번호</th>
+			<th>메뉴이름</th>
+			<th>메뉴가격</th>
+			<th>카테고리</th>
+			<th>판매여부</th>			
+		</tr>
+		<tr>
+			<td th:text="${beforeModifyMenu.menuCode}"></td>
+			<td th:text="${beforeModifyMenu.menuName}"></td>
+			<td th:text="${beforeModifyMenu.menuPrice}"></td>
+			<td th:text="${beforeModifyMenu.categoryCode}"></td>
+			<td th:text="${beforeModifyMenu.orderableStatus}"></td>
+		</tr>
+	</table>
+	<br>
+		<h3 align="center">변경 후 메뉴</h3>
+	<table border="1" style="margin-right:auto; margin-left:auto">
+		<tr>
+			<th>메뉴번호</th>
+			<th>메뉴이름</th>
+			<th>메뉴가격</th>
+			<th>카테고리</th>
+			<th>판매여부</th>			
+		</tr>
+		<tr>
+			<td th:text="${menu.menuCode}"></td>
+			<td th:text="${menu.menuName}"></td>
+			<td th:text="${menu.menuPrice}"></td>
+			<td th:text="${menu.categoryCode}"></td>
+			<td th:text="${menu.orderableStatus}"></td>
+		</tr>
+	</table>
+	<br>
+	<div style="text-align: center;">
+		<button onclick="location.href='/main'" >메인으로</button><br><br>
+	</div>
+
+</body>
+</html>
